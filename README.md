@@ -56,7 +56,7 @@ npm run dev         # http://localhost:3000
    - **Plantillas de correo:** los enlaces deben llevar a `/auth/callback`.
 4. **Variables de entorno:** copia `.env.example` a `.env.local`, o ponlas en Netlify, con `NEXT_PUBLIC_SUPABASE_URL` y `NEXT_PUBLIC_SUPABASE_ANON_KEY` (están en Project Settings → API).
 5. **Primer admin:** cuando Sandra entre por primera vez, ejecuta en SQL Editor:
-   `update perfiles set rol = 'admin' where correo = 'sandra@sanmichelsen.com';`
+   `update perfiles set rol = 'admin' where correo = 'san@sanmichelsen.com';`
 
 ## Publicar en Netlify
 
