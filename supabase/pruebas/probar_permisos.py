@@ -200,6 +200,7 @@ check('puede cambiar roles', True)
 print('\nVisitante sin sesión')
 sql("reset role"); sql("select set_config('request.jwt.claim.sub','',false)"); sql("set role anon")
 check('ve los programas para la landing', sql("select count(*) from programas")[0][0] == 6)
+check('no ve los paquetes de sesiones extra', sql("select count(*) from paquetes_sesiones")[0][0] == 0)
 falla('no ve inscripciones', "select count(*) from inscripciones")
 falla('no puede llamar funciones internas', "select saldo(%s,'consultor')", (I['mariana'],), 'permission denied')
 

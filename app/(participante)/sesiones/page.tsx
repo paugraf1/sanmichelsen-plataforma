@@ -71,7 +71,7 @@ export default async function Sesiones() {
           <h2 className="hs">¿Necesitas más?</h2>
           <p className="mut sm" style={{ margin: 0 }}>Suma paquetes de 1, 3 o 5 sesiones con tu consultor o con Sandra. Se agregan a tu contador en cuanto pagas.</p>
           <div className="grid g3" style={{ margin: 0 }}>
-            {[1, 3, 5].map((k) => <div key={k} className="card" style={{ padding: 16, gap: 4 }}><span className="n" style={{ fontSize: 34 }}>{k}</span><span className="sm">{k === 1 ? 'sesión' : 'sesiones'}</span><span className="xs mut">Precio por confirmar</span></div>)}
+            {([[1, '3,500', ''], [3, '9,000', '$3,000 por sesión'], [5, '14,000', '$2,800 por sesión']] as const).map(([k, precio, nota]) => <div key={k} className="card" style={{ padding: 16, gap: 4 }}><span className="n" style={{ fontSize: 34 }}>{k}</span><span className="sm">{k === 1 ? 'sesión' : 'sesiones'}</span><span className="sm" style={{ fontWeight: 600 }}>${precio} MXN</span>{nota && <span className="xs mut">{nota}</span>}</div>)}
           </div>
           <span className="note">El pago con Stripe se conecta en la siguiente etapa.</span>
         </div>

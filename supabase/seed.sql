@@ -15,9 +15,10 @@ insert into public.programas (clave, nombre, tipo, descripcion, sesiones_consult
 ('outplacement-6','Outplacement 6 meses','empresa',null,10,3,6,true,'{}',12)
 on conflict (clave) do nothing;
 
-insert into public.paquetes_sesiones (cantidad, con) values
-(1,'consultor'),(3,'consultor'),(5,'consultor'),(1,'sandra'),(3,'sandra'),(5,'sandra')
-on conflict do nothing;
+-- Mismo precio con consultor o con Sandra (llamada del 11 nov)
+insert into public.paquetes_sesiones (cantidad, con, precio_mxn) values
+(1,'consultor',3500),(3,'consultor',9000),(5,'consultor',14000),(1,'sandra',3500),(3,'sandra',9000),(5,'sandra',14000)
+on conflict (cantidad, con) do update set precio_mxn = excluded.precio_mxn;
 
 insert into public.modulos (numero, fase, titulo, minutos) values
 (1,'reconecta','Redefiniendo tu carrera',40),

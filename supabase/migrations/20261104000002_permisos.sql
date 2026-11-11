@@ -461,11 +461,10 @@ create policy consultores_ver on public.consultores for select to authenticated 
 create policy consultores_propio on public.consultores for update to authenticated using (perfil_id = auth.uid()) with check (perfil_id = auth.uid());
 create policy consultores_admin on public.consultores for all to authenticated using (public.es_admin()) with check (public.es_admin());
 
--- programas y paquetes (se ven en la landing sin sesión)
+-- programas (se ven en la landing sin sesión); los paquetes de sesiones extra solo dentro de la plataforma
 create policy programas_ver_publico on public.programas for select to anon using (activo);
 create policy programas_ver on public.programas for select to authenticated using (activo or public.es_admin());
 create policy programas_admin on public.programas for all to authenticated using (public.es_admin()) with check (public.es_admin());
-create policy paquetes_ver_publico on public.paquetes_sesiones for select to anon using (activo);
 create policy paquetes_ver on public.paquetes_sesiones for select to authenticated using (activo or public.es_admin());
 create policy paquetes_admin on public.paquetes_sesiones for all to authenticated using (public.es_admin()) with check (public.es_admin());
 
